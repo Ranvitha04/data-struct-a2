@@ -164,7 +164,7 @@ bool LoadPolygonCsv(const std::string& filePath, Polygon& polygon, std::string& 
 
 void WritePolygonCsv(std::ostream& output, const Polygon& polygon) {
     // This prints the assignment-required CSV header first
-    output << "ring_id,vertex_id,x,y\n";
+    output << "ring_id,vertex_id,x,y\r\n";
 
     // This emits rows in deterministic ring order and contiguous vertex ids per ring
     for (const Ring& ring : polygon.rings) {
@@ -172,7 +172,7 @@ void WritePolygonCsv(std::ostream& output, const Polygon& polygon) {
             const Point& point = ring.vertices[vertexId];
             output << ring.ringId << ',' << vertexId << ','
                    << FormatCoordinate(point.x) << ','
-                   << FormatCoordinate(point.y) << '\n';
+                   << FormatCoordinate(point.y) << "\r\n";
         }
     }
 }
